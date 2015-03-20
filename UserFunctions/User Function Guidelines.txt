@@ -1,0 +1,40 @@
+User defined functions and reading routines can be placed into this folder.
+
+Five major "constraints" govern the use of user defined functions in this folder.
+The functions must meet all five criteria to be executed properly, otherwise errors may
+occur.  A sample function, "funDSI_USR_copychans.m" is provided as an example.
+
+Requirements:
+1.  Files to run must be in functional form (unless they are completely self-contained) and 
+    follow the naming convention of "funDSI_USR_<namehere>.m" where the <namehere> portion can be
+	the name of the user-defined call, but without any spaces.  For example, "funDSI_USR_median.m"
+	could be a user-defined	function to compute the median inside the DSI toolbox.
+
+2.	To properly execute, the first line of the "help" statement (e.g., what appears when "help funDSI_USR_median"
+	is run) must contain the functional syntax and appropriate variables to pass for the function to work.  e.g.,
+	for the funDSI_USR_median.m above, a "help funDSI_USR_median" would return:
+	"[PSMsigsX,namesX,chankeyX]=funDSI_USR_median(PSMsigsX,namesX,chankeyX)"
+
+3.	A "user friendly" description of the file is expected to be on the second line of the "help" statement.  This will
+	be used for populating the menu of available choices, so it should be sufficient for a user to understand what this
+	file does.  If a second line is not detected, the file name will simply be used.
+
+4.	The functions primarily have access to the data inside the DSI Toolbox.  Calls to other functions and larger
+	toolbox globals (such as the macro functionality) are not supported directly.  The user can attempt to use these,
+	but their functionality is not guaranteed.  Variables available to the functions are:
+		CFname			- Configuration file name for any data load operations.  If a user loading function is incorporated,
+						  it is recommended that it populate this variable.
+		CaseComR		- Log of actions done to this particular data set.  Could include data loads, any post-processing actions,
+						  or generic information on model parameters.  This field is used to help reconstruct the process from which
+						  the final result was produced.
+		PSMreftimes		- Reference times for files loaded, in seconds since January 1, 1900.
+		PSMtype			- Fundamental type of data loaded
+		PSMfiles		- Tracking variable for any files loaded to create PSMsigsX.  If a user loading function is incorporated,
+						  it is recommended that it populate this variable.
+		PSMsigsX		- Data with individual channels being columns.  Column 1 is assumed to be time in seconds from PSMreftimes entry
+						  number 1, which is encoded as seconds since January 1, 1900.
+		chankeyX		- column numbers and channel names for various columns of PSMsigsX
+		namesX			- channel names for various columns of PSMsigsX
+		tstep			- Sampling timestep for data in PSMsigsX
+
+5.	Only 98 user functions are supported.  Item 99 is reserved as the "quit back to the main PSMbrowser menu" call

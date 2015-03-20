@@ -1,0 +1,4 @@
+This folder contains older documentation and user guides for the
+DSI toolbox.  While most of the material should still be relevant and
+correct, some of these files are a little old.  Please be aware that any
+web links and addresses are probably no longer valid.

@@ -1,0 +1,8 @@
+In order to get SQL support to work properly, the appropriate Java interface for the SQL database type
+is required.  Below are the steps for setting up the SQL database JAR interface.
+
+1. Download the appropriate interfacing .jar file from the database provider.
+2. Place the .jar file somewhere accessible and note the path.
+3. Obtain the table names, field names, and relevant information from the database of interest.
+4. Edit the "SQL_Config.cfg" file under the main DSI Toolbox folder with the appropriate values.
+5. Run the DSI toolbox 

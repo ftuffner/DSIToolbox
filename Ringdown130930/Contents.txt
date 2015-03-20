@@ -1,0 +1,37 @@
+% BPA/PNNL Dynamic Systems Identification Toolbox
+%
+% Ringdown Analysis Tool, Version 3.1.8, 30-Sep-2013.
+%
+% The Ringdown Analysis Tool is a MATLAB graphical user interface based
+% environment for analyzing dynamic system ringdown data using Prony and
+% Fourier based techniques.  It is a component of the Dynamic Systems
+% Identification Toolbox.
+%
+% For usage instructions, type
+%
+%                               help ringdown
+%
+% at the MATLAB command prompt.
+%
+% Files in this directory:
+%
+%   ringdown.m - Opens the Ringdown Analysis Tool.
+%   getmodel.m - Returns identified model to MATLAB workspace.
+%
+% Files in the private subdirectory:
+%
+%   combin.m, create_dict.m, create_inpulse_matrix.m, dpssread.m,
+%	MsgDict.m, ppsmread.m, prgv2_5.m, prspak.m, PSAMread.m, ptirread.m,
+%	reorder_modes.m, rguidt.m, rguifilt.m, rguiload.m, rguimgr.m,
+%	rguipref.p, rguisave.m, settp.m, swxload0.m, tranfrq0.m, tranfun.m,
+%	transimf.m
+%
+% These are Ringdown Analysis Tool utility functions.
+
+% Copyright (c) 1995-2014 Battelle Memorial Institute.  The Government
+% retains a paid-up nonexclusive, irrevocable worldwide license to
+% reproduce, prepare derivative works, perform publicly and display
+% publicly by or for the Government, including the right to distribute
+% to other Government contractors.
+%
+% $Id$

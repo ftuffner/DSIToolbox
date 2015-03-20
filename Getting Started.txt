@@ -1,0 +1,27 @@
+To begin using the DSI toolbox, first the entire path must be added
+to your current MATLAB path.  There are two ways to do this in MATLAB.
+
+1A. Utilize the MATLAB GUI to add the DSI toolbox to the path.  1A and 1B below depend on
+    which version of MATLAB you are running (newer versions are 1A, older have 1B).
+    1AA.  Click the "Set Path" button under the "Home" tab on the top of the MATLAB window.
+    1AB.  Go to File->"Set Path" menu option on the top of the MATLAB window.
+	
+	-- After finding the "Set Path" button/item, click the "Add with Subfolders" button
+	-- Locate the base folder of the DSI Toolbox (the folder with this file in it) and
+	   hit "Select Folder"
+	-- After adding the path, you can either "Close" or "Save and Close", depending on if you
+	   want this saved in the MATLAB path for just this session, or forever.
+
+1B.	Utilize a MATLAB command to add the DSI Toolbox to the working path for the current session.
+    This can be done with the MATLAB command:
+		
+		addpath(genpath('C:\MATLABToolBoxes\DSITools'));
+	
+	where "C:\MATLABToolBoxes\DSITools" is the path to the parent folder of the DSI Toolbox.
+
+2.	After adding the DSI Toolbox to the appropriate path, it can now be launched with the command:
+
+	PSMbrowser
+	
+	If you wish to utilize the SQL connection capability, please follow the "SQL_Database_Interface.txt"
+	instructions before executing PSMbrowser.
