@@ -1,6 +1,7 @@
 # DSIToolbox
 Dynamic System Identification Toolbox
-Developed by the Pacific Northwest National Laboratory
+Developed at the Pacific Northwest National Laboratory with contributions
+from other government entities and universities.
 
 The DSI Toolbox provides unique capabilities in the analysis and control of
 large dynamic systems. It is designed to run with MATLAB, providing flexibility
