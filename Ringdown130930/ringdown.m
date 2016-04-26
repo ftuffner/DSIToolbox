@@ -522,7 +522,16 @@ function ringdown(outdat,titles,inpulses,pol,opts,figNumber);
       Pointer,'watch',Units,'pixels',Position,figPos,Visible,offstr, ...
       Color,figBackgroundColor);
 
-    figTag=sprintf('RGUIFIG%d',figNumber);
+    %Version check, since things changed in 2014b+
+    if verLessThan('matlab','8.4.0')
+        % execute code for R2014a or earlier
+        figNumberVal = figNumber;
+    else
+        % execute code for R2014b or later
+        figNumberVal=figNumber.Number;
+    end
+       
+    figTag=sprintf('RGUIFIG%d',figNumberVal);
     closefcn=['delete(findobj(0,''Tag'',''' figTag '''));'];
 
     set(figNumber,Tag,figTag,'CloseRequestFcn',closefcn, ...
