@@ -168,48 +168,50 @@ if (nncalc)
         phs(k+1) = 0.0;
     end
     
-    %Large loop
-    for ival = 0:(qcon-1)
-        if (abs(frqrps(ival+1)) < 1e-8)
-            xr = resr(ival+1)/pi;
-            yr = -dampf(ival+1)/(2*pi);
-            y1 = yr*yr;
-            zr = -xr*yr;
-            
-            for kval=0:(nnfrq-1)
-                fr = frq(kval+1);
-                zi = -xr*fr;
-                zdn = y1 + fr*fr;
-                
-                if (zdn == 0.0)
-                    mag(m+k+1) = mag(m+kval+1) + zr*1e35;
-                    phs(m+k+1) = phs(m+kval+1) + zi*1e35;
-                else
-                    mag(m+kval+1) = mag(m+kval+1) + zr/zdn;
-                    phs(m+kval+1) = phs(m+kval+1) + zi/zdn;
+    %Large loop - check for empty
+    if (~isempty(frqrps))
+        for ival = 0:(qcon-1)
+            if (abs(frqrps(ival+1)) < 1e-8)
+                xr = resr(ival+1)/pi;
+                yr = -dampf(ival+1)/(2*pi);
+                y1 = yr*yr;
+                zr = -xr*yr;
+
+                for kval=0:(nnfrq-1)
+                    fr = frq(kval+1);
+                    zi = -xr*fr;
+                    zdn = y1 + fr*fr;
+
+                    if (zdn == 0.0)
+                        mag(m+k+1) = mag(m+kval+1) + zr*1e35;
+                        phs(m+k+1) = phs(m+kval+1) + zi*1e35;
+                    else
+                        mag(m+kval+1) = mag(m+kval+1) + zr/zdn;
+                        phs(m+kval+1) = phs(m+kval+1) + zi/zdn;
+                    end
                 end
-            end
-        else
-            xr = (dampf(ival+1)*resr(ival+1) - frqrps(ival+1)*resi(ival+1))/(2*pi*pi);
-            x1 = resr(ival+1)/pi;
-            y1 = (dampf(ival+1)*dampf(ival+1) + frqrps(ival+1)*frqrps(ival+1))/(4*pi*pi);
-            y2 = -dampf(ival+1)/pi;
-            
-            for kval=0:(nnfrq-1)
-                fr = frq(kval+1);
-                xi = x1*fr;
-                yr = y1 - fr*fr;
-                yi = y2*fr;
-                zr = xr*yr - xi*yi;
-                zi = yr*xi + xr*yi;
-                zdn = yr*yr + yi*yi;
-                
-                if (zdn == 0.0)
-                    mag(m+kval+1) = mag(m+kval+1) + zr*1e35;
-                    phs(m+kval+1) = phs(m+kval+1) + zi*1e35;
-                else
-                    mag(m+kval+1) = mag(m+kval+1) + zr/zdn;
-                    phs(m+kval+1) = phs(m+kval+1) + zi/zdn;
+            else
+                xr = (dampf(ival+1)*resr(ival+1) - frqrps(ival+1)*resi(ival+1))/(2*pi*pi);
+                x1 = resr(ival+1)/pi;
+                y1 = (dampf(ival+1)*dampf(ival+1) + frqrps(ival+1)*frqrps(ival+1))/(4*pi*pi);
+                y2 = -dampf(ival+1)/pi;
+
+                for kval=0:(nnfrq-1)
+                    fr = frq(kval+1);
+                    xi = x1*fr;
+                    yr = y1 - fr*fr;
+                    yi = y2*fr;
+                    zr = xr*yr - xi*yi;
+                    zi = yr*xi + xr*yi;
+                    zdn = yr*yr + yi*yi;
+
+                    if (zdn == 0.0)
+                        mag(m+kval+1) = mag(m+kval+1) + zr*1e35;
+                        phs(m+kval+1) = phs(m+kval+1) + zi*1e35;
+                    else
+                        mag(m+kval+1) = mag(m+kval+1) + zr/zdn;
+                        phs(m+kval+1) = phs(m+kval+1) + zi/zdn;
+                    end
                 end
             end
         end

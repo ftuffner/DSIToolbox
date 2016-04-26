@@ -95,7 +95,8 @@ function rguiload(figNumber,action1,action2);
   %======================================
   % Set the figure size and position.  Set colors.
     if isempty(figNumber)
-      rguipref('rguifcn',6);
+		load rguipref.mat;
+      % rguipref('rguifcn',6);
     else
       oldUnits=get(figNumber,Units); set(figNumber,Units,pixelstr);
       figPos=get(figNumber,Position); set(figNumber,Units,oldUnits);

@@ -120,6 +120,14 @@ function ringdown(outdat,titles,inpulses,pol,opts,figNumber);
         'to other Government contractors.\n\n' ...
         'Date of last source code modification:  02/04/2008 (JMJ)\n\n']);
     else
+        if (strcmpi(outdat,'rguipref(gcf,1);'))
+            fprintf(1,['If you encountered this function, please contact Frank Tuffner at PNNL\n' ...
+                       'with information on how you encountered it.  He can be reached at\n' ...
+                       'francis (dot) tuffner (at) SPAMpnnl (dot) gov (substitute dots and remove SPAM\n' ...
+                       'for the proper email).  This is an old function that source code was lost to,\n' ...
+                       'so your feedback can help replace this final outlier.\n']);
+                   keyboard;
+        end
       h=0; eval(outdat); if h; assignin('caller',wksvar,idmodel); end
     end
     warning warnstate;
@@ -501,7 +509,9 @@ function ringdown(outdat,titles,inpulses,pol,opts,figNumber);
 
   %===============================================
   % Set the figure size and position.  Set colors.
-    rguipref('rguifcn',6); editHt2=editHt/2;
+	load rguipref.mat;
+    editHt2=editHt/2;
+	% rguipref('rguifcn',6); editHt2=editHt/2;
 
     rguiprefs=[mtbAParameterColor; mtbIParameterColor; ...
                mtbSParameterColor; lineColorOrder];
@@ -587,7 +597,7 @@ function ringdown(outdat,titles,inpulses,pol,opts,figNumber);
 
     uimenu(h,Tag,prfmenuTag,Label,'Preferences',Separator,onstr, ...
       UserData,rguiprefs,CallBack,'ringdown(''rguipref(gcf,1);'');');
-
+	  
     uimenu(h,Label,'Exit Ringdown Tool',Separator,onstr,CallBack,closefcn);
 
   %===============================================
