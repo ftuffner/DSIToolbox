@@ -352,7 +352,11 @@ if action1==1
       for ii = 1:1000                % 1000 is the limti of signal numbers. should not be exceeded for real cases
         submenuTag = sprintf('%s%d',outsubmenuTag,ii);
         submenuHndl = findobj(figNumber,Tag,submenuTag); 
-        if submenuHndl; set(submenuHndl,Checked,onstr); else break; end
+        if ~isempty(submenuHndl)
+            set(submenuHndl,Checked,onstr);
+        else
+            break;
+        end
       end
       
       if outctrlval == 1         % if multi-signal setting, then add the signal to the current output list. Henry, 04/07/03
@@ -402,7 +406,11 @@ if action1==1
       for ii = 2:1000                % 1000 is the limit of signal numbers. should not be exceeded for real cases
         submenuTag = sprintf('%s%d',outsubmenuTag,ii);
         submenuHndl = findobj(figNumber,Tag,submenuTag); 
-        if submenuHndl; set(submenuHndl,Checked,offstr); else break; end
+        if ~isempty(submenuHndl)
+            set(submenuHndl,Checked,offstr);
+        else
+            break;
+        end
       end
       
       curout=actoutlist(1); outctrlval=2;
