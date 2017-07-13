@@ -1614,7 +1614,18 @@ function rguitit(action,fntname,fntsize);
 
   if action==2
     figNumber=gcf; fntname=get(figNumber,'DefaultAxesFontName');
-    fntsize=get(figNumber,'DefaultAxesFontSize'); h=sprintf('RGUIFIG%d',figNumber);
+    fntsize=get(figNumber,'DefaultAxesFontSize');
+    
+    %Version check, since things changed in 2014b+
+    if verLessThan('matlab','8.4.0')
+        % execute code for R2014a or earlier
+        figNumberVal = figNumber;
+    else
+        % execute code for R2014b or later
+        figNumberVal=figNumber.Number;
+    end
+    
+    h=sprintf('RGUIFIG%d',figNumberVal);
   else
     h='';
   end
